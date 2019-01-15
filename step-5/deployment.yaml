@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-volume
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-volume
+  template:
+    metadata:
+      labels:
+        app: nginx-volume
+    spec:
+      containers:
+      - name: nginx-volume
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /my-disk
+          name: my-volume
+      volumes:
+      - name: my-volume
+        persistentVolumeClaim:
+          claimName: my-volume

@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: stress
+  labels:
+    k8s-app: stress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: stress
+  template:
+    metadata:
+      labels:
+        k8s-app: stress
+    spec:
+      containers:
+      - name: stress
+        image: progrium/stress
+        imagePullPolicy: Always
+        args: ["--cpu", "1"]
+        resources:
+          limits:
+            cpu: "0.2"
+          requests:
+            cpu: "0.1"
