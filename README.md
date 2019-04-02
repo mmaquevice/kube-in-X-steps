@@ -4,6 +4,8 @@
 
 #### Install kubectl
 
+##### Package
+
 ###### Ubuntu
 
 ```
@@ -19,6 +21,34 @@
 ```
 brew install kubernetes-cli
 ```
+
+##### Binary
+
+###### Ubuntu
+
+```
+curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.12.0/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+```
+
+###### macOS
+
+```
+curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.12.0/bin/darwin/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+```
+
+###### Windows
+
+- Download the binary:
+
+```
+curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.12.0/bin/windows/amd64/kubectl.exechmod +x ./kubectl
+```
+
+- Add it to your PATH.
 
 #### Install helm
 
@@ -37,3 +67,14 @@ wget https://storage.googleapis.com/kubernetes-helm/helm-v2.11.0-darwin-amd64.ta
 tar -zxvf helm-v2.11.0-darwin-amd64.tar.gz
 mv darwin-amd64/helm /usr/local/bin/helm
 ```
+
+###### Windows
+
+- Download the following zip:
+
+```
+https://storage.googleapis.com/kubernetes-helm/helm-v2.11.0-windows-amd64.zip
+```
+
+- Extract it
+- Add the executable to your PATH.
