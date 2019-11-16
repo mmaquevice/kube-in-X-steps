@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  # Unique key of the Job instance
+  name: job-backoff
+spec:
+  # Number of retries before considering a Job as failed
+  backoffLimit: 2
+  template:
+    metadata:
+      name: job-backoff
+    spec:
+      activeDeadlineSeconds: 5
+      containers:
+        - name: pi
+          image: perl
+          command: ["perl"]
+          args: ["-Mbignum=bpi", "-wle", "print bpi(2000)"]
+      # Do not restart containers after they exit
+      restartPolicy: Never
