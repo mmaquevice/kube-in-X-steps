@@ -10,4 +10,4 @@ kubectl get pods -o wide
 ssh ...
 
 # Find your cluster ip service
-iptables -t nat -L KUBE-SERVICES
+sudo iptables -t nat -L KUBE-SERVICES

@@ -1,1 +1,1 @@
-# Pod IP
+# Service ClusterIp
