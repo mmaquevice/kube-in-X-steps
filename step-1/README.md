@@ -1,3 +1,1 @@
-# Step 1
-
-pod
+# Kubernetes Objects

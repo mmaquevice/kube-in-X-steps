@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guaranted
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: guaranted
+  template:
+    metadata:
+      labels:
+        app: guaranted
+    spec:
+      containers:
+      - name: guaranted
+        image: nginx
+        ports:
+        - name: http
+          containerPort: 80
+        resources:
+          limits:
+            cpu: "0.2"
+            memory: 100Mi
+          requests:
+            cpu: "0.2"
+            memory: 100Mi

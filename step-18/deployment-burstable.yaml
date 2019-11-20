@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: burstable
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: burstable
+  template:
+    metadata:
+      labels:
+        app: burstable
+    spec:
+      containers:
+      - name: burstable
+        image: nginx
+        ports:
+        - name: http
+          containerPort: 80
+        resources:
+          limits:
+            cpu: "0.2"
+          requests:
+            cpu: "0.1"

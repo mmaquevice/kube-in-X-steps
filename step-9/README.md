@@ -1,3 +1,1 @@
-# Step 6
-
-affinity
+# Pod IP
