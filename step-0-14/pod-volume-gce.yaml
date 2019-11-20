@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-volume-host-gce
+spec:
+  containers:
+    - image: nginx:1.15
+      name: test-container
+      volumeMounts:
+        - mountPath: /test-pd
+          name: test-volume
+  volumes:
+    - name: test-volume
+      # This GCE PD must already exist (gcloud compute disks create --size=10GB --zone=europe-west3-a my-data-disk-1)
+      gcePersistentDisk:
+        pdName: my-data-disk-1
+        fsType: ext4
