@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      tolerations:
+        - key: "not-for-you"
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule"
+#          tolerationSeconds: 3600 # Option for "NoSchedule" effect
+      containers:
+      - name: nginx
+        image: nginx:1.15
+        ports:
+        - containerPort: 80
