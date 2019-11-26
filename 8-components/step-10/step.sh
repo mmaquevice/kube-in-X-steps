@@ -19,7 +19,7 @@ ssh -i ~/.ssh/formation formation@${controllerExternalIps["controller-${CLUSTER_
 
 # Deployments
 
-kubectl run --rm nginx --image=nginx
+kubectl create deployment nginx --image=nginx
 sleep 30
 kubectl get pods -l app=nginx
 

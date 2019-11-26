@@ -8,6 +8,7 @@ kubectl apply -f deployment-pod-affinity-hard.yaml
 kubectl apply -f deployment-pod-affinity-soft.yaml
 # => create 3 replicas
 
+# Try to update replicas to node number + 1
 
 
 # Node affinity
