@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 
+set -x
+
 source ./variables.sh
 
-# The Encryption Key
+# An encryption key and an encryption config suitable for encrypting Kubernetes Secrets
+
+### The Encryption Key
 
 ENCRYPTION_KEY=$(head -c 32 /dev/urandom | base64)
 
-# The Encryption Config File
+### The Encryption Config File
 
 cat > encryption-config.yaml <<EOF
 kind: EncryptionConfig

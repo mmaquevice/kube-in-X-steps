@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -x
+
 source ./variables.sh
 
 # Provisioning a Kubernetes Worker Node
@@ -10,4 +12,4 @@ done
 
 # Verification
 
-ssh -i ~/.ssh/formation formation@${workerExternalIps["worker-0"]} 'kubectl get nodes --kubeconfig admin.kubeconfig'
+ssh -i ~/.ssh/formation formation@${controllerExternalIps["controller-${CLUSTER_ID}-0"]} 'kubectl get nodes --kubeconfig admin.kubeconfig'

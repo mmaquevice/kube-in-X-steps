@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -x
+
 # Prerequiresites
 
 # Download and install cfssl and cfssljson

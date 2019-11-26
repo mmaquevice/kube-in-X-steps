@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -x
+
 source ./variables.sh
 
 # Provision the Kubernetes Control Plane
@@ -11,7 +13,7 @@ done
 
 # RBAC for Kubelet Authorization
 
-ssh -i ~/.ssh/formation formation@${controllerExternalIps["controller-0"]} 'bash -s' < step-6/rbac-apiserver-to-kubelet.sh
+ssh -i ~/.ssh/formation formation@${controllerExternalIps["controller-${CLUSTER_ID}-0"]} 'bash -s' < step-6/rbac-apiserver-to-kubelet.sh
 
 # Check the Kubernetes Frontend Load Balancer
 

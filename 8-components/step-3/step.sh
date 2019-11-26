@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
 
+set -x
+
 # You will generate kubeconfig files for the controller manager, kubelet, kube-proxy, and scheduler clients and the admin user
 
 source ./variables.sh
 
-for instance in worker-0 worker-1 worker-2; do
+
+
+# The kubelet Kubernetes Configuration File
+
+for instance in worker-${CLUSTER_ID}-0 worker-${CLUSTER_ID}-1 worker-${CLUSTER_ID}-2; do
   kubectl config set-cluster kubernetes-the-hard-way \
     --certificate-authority=ca.pem \
     --embed-certs=true \
@@ -139,7 +145,7 @@ done
 # Copy the appropriate kube-controller-manager and kube-scheduler kubeconfig files to each controller instance
 
 for instance in "${!controllerExternalIps[@]}"; do
-  scp -i ~/.ssh/formation admin.kubeconfig   formation@${controllerExternalIps[$instance]}:~/
+  scp -i ~/.ssh/formation admin.kubeconfig formation@${controllerExternalIps[$instance]}:~/
   scp -i ~/.ssh/formation kube-controller-manager.kubeconfig formation@${controllerExternalIps[$instance]}:~/
   scp -i ~/.ssh/formation kube-scheduler.kubeconfig formation@${controllerExternalIps[$instance]}:~/
 done

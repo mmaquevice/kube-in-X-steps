@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -x
+
 source ./variables.sh
 
 # The Admin Kubernetes Configuration File
