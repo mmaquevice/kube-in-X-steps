@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+set -x
+
+source ./variables.sh
+
 # Prerequiresites
 bash step-1/step.sh
 
