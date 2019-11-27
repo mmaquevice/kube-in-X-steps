@@ -9,7 +9,7 @@ kubectl get svc
 kubectl get secret
 # => secret of the service account
 
-kubectl run -i --tty --rm tools-curl --image=giantswarm/tiny-tools
+kubectl run --generator=run-pod/v1 -i --tty --rm tools-curl --image=giantswarm/tiny-tools
 # => run busybox with curl
 # in container $> curl https://kubernetes/api
 # => no response
@@ -18,8 +18,8 @@ kubectl run -i --tty --rm tools-curl --image=giantswarm/tiny-tools
 # in container $> ls
 
 # => service account related files
-# in container $> CA_CERT=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
-# in container $> TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
+# in container $> CA_CERT=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt # API Server CRT
+# in container $> TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token) # JWT Token signed with Service Account private key
 # in container $> NAMESPACE=$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)
 # in container $> curl --cacert $CA_CERT -H "Authorization: Bearer $TOKEN" "https://kubernetes/api/v1/namespaces/$NAMESPACE/services/"
 # => 403

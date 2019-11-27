@@ -27,7 +27,7 @@ openssl x509 -req -in mary.csr -CA [CA CLUSTER CRT] -CAkey [CA CLUSTER KEY] -CAc
 
 # Register the new credentials and config context
 kubectl config set-credentials john --client-certificate=[JOHN CRT] --client-key=[JOHN KEY] --embed-certs=true # If you want this file to be portable between hosts you need to embed the certificates inline. You can do this automatically appending the --embed-certs=true parameter to the kubectl config set-credentials command.
-kubectl config set-context john@kubernetes --cluster=kubernetes --user=john
+kubectl config set-context john@kubernetes --cluster=kubernetes-the-hard-way --user=john
 kubectl config get-contexts
 
 # Use this context
@@ -35,7 +35,7 @@ kubectl config use-context john@kubernetes
 kubectl get pods
 
 # Use Admin context and create cluster role binding
-kubectl config use-context kubernetes-admin@kubernetes
+kubectl config use-context kubernetes-the-hard-way
 kubectl create clusterrolebinding examplegroup-admin-binding --clusterrole=cluster-admin --group=examplegroup
 
 # Retry
@@ -44,7 +44,7 @@ kubectl get pods
 
 # Try with Mary
 kubectl config set-credentials mary --client-certificate=[MARY CRT] --client-key=[MARY KEY] --embed-certs=true # If you want this file to be portable between hosts you need to embed the certificates inline. You can do this automatically appending the --embed-certs=true parameter to the kubectl config set-credentials command.
-kubectl config set-context mary@kubernetes --cluster=kubernetes --user=mary
+kubectl config set-context mary@kubernetes --cluster=kubernetes-the-hard-way --user=mary
 kubectl config get-contexts
 kubectl config use-context mary@kubernetes
 kubectl get pods
