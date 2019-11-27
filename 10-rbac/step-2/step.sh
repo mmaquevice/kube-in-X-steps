@@ -9,7 +9,7 @@ kubectl get svc
 kubectl get secret
 # => secret of the service account
 
-kubectl run -i --tty --rm curl-tns --image=radial/busyboxplus:curl
+kubectl run -i --tty --rm tools-curl --image=giantswarm/tiny-tools
 # => run busybox with curl
 # in container $> curl https://kubernetes/api
 # => no response

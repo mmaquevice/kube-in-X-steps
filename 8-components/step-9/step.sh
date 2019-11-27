@@ -6,7 +6,7 @@ source ./variables.sh
 
 # The DNS Cluster Add-on
 
-kubectl apply -f https://storage.googleapis.com/kubernetes-the-hard-way/coredns.yaml
+kubectl apply -f step-9/coredns.yaml
 kubectl get pods -l k8s-app=kube-dns -n kube-system
 
 # Verification

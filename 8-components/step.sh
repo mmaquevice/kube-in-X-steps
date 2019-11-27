@@ -5,7 +5,7 @@ set -x
 source ./variables.sh
 
 # Prerequiresites
-bash step-1/step.sh
+#bash step-1/step.sh
 
 # TLS certificates
 bash step-2/step.sh
